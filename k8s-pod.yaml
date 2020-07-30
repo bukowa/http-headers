@@ -13,7 +13,7 @@ spec:
         app: golang-http-headers
     spec:
       containers:
-      - image: quay.io/examples/go-http-headers
+      - image: quay.io/examples/go-http-headers:master
         imagePullPolicy: Always
         name: golang-http-headers
         ports:
