@@ -2,11 +2,13 @@ package main
 
 import (
     "fmt"
+    "log"
     "net/http"
     "sort"
 )
 
 func headers(w http.ResponseWriter, req *http.Request) {
+    log.Printf("%v %v %v %v", req.RemoteAddr, req.URL, req.Host, req.Header)
     sortedKeys := make([]string, 0, len(req.Header))
 
     for name, _ := range req.Header {
