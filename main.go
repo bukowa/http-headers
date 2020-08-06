@@ -8,6 +8,7 @@ import (
 )
 
 func headers(w http.ResponseWriter, req *http.Request) {
+    log.Println("Hello! There's a request incoming!")
     log.Printf("%v %v %v %v", req.RemoteAddr, req.URL, req.Host, req.Header)
     sortedKeys := make([]string, 0, len(req.Header))
 
