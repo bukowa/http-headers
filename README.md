@@ -1,1 +1,1 @@
-nginx ingress + cert-manager
+[![Docker Repository on Quay](https://quay.io/repository/examples/go-http-headers/status "Docker Repository on Quay")](https://quay.io/repository/examples/go-http-headers)
