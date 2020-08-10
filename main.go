@@ -37,6 +37,6 @@ func main() {
 
     var address = strings.Join([]string{*host, *port}, ":")
 
-    log.Printf("Starting server at %s", address)
+    log.Printf("Starting instance %s server at %s", *Name, address)
     http.ListenAndServe(address, nil)
 }
