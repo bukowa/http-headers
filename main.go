@@ -5,6 +5,8 @@ import (
     "log"
     "net/http"
     "sort"
+    "flag"
+    "strings"
 )
 
 func headers(w http.ResponseWriter, req *http.Request) {
@@ -24,5 +26,14 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func main() {
     http.HandleFunc("/", headers)
-    http.ListenAndServe(":8090", nil)
+
+    var host = flag.String("host", "", "host to run on")
+    var port = flag.String("port", "8080", "port to run on")
+
+    flag.Parse()
+
+    var address = strings.Join([]string{*host, *port}, ":")
+
+    log.Printf("Starting server at %s", address)
+    http.ListenAndServe(address, nil)
 }
