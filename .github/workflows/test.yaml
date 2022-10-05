@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "latest"
+
+jobs:
+  test_k3d:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: test k3d
+        run: |
+          curl -s https://raw.githubusercontent.com/k3d-io/k3d/516fe7c9fde884fe31b3e448a83c06ae46dd331e/install.sh | bash
+          k3d cluster create test \
+            --servers=3 \
+            -p '80:80@loadbalancer' \
+            -p '443:443@loadbalancer' \
+            --verbose
+          helm install --wait http charts/http-headers
+          helm test http
