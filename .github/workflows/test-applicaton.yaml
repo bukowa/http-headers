@@ -3,17 +3,17 @@ name: Build & Test Application in Docker
 on:
   pull_request:
     paths:
-      - /Dockerfile
-      - /main.go
-      - /test.sh
+      - "/Dockerfile"
+      - "/main.go"
+      - "/test.sh"
     branches:
       - "*"
 
   push:
     paths:
-      - /Dockerfile
-      - /main.go
-      - /test.sh
+      - "/Dockerfile"
+      - "/main.go"
+      - "/test.sh"
     branches:
       - "*"
 
