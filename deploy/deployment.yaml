@@ -5,39 +5,38 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: golang-http-headers
+      app: http-headers
   replicas: 2
   template:
     metadata:
       labels:
-        app: golang-http-headers
+        app: http-headers
     spec:
       containers:
       - image: quay.io/k8start/http-headers
         imagePullPolicy: Always
-        name: golang-http-headers
+        name: http-headers
         ports:
         - containerPort: 8090
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: golang-http-headers
+  name: http-headers
 spec:
   ports:
   - port: 80
     targetPort: 8090
     protocol: TCP
   selector:
-    app: golang-http-headers
+    app: http-headers
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: golang-http-headers
+  name: http-headers
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/issuer: "letsencrypt-prod"
 spec:
   tls:
   - hosts:
@@ -47,7 +46,10 @@ spec:
   - host: headers.example.com
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: golang-http-headers
-          servicePort: 80
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: http-headers
+              port:
+                number: 80
