@@ -1,0 +1,31 @@
+name: Build & Test Application in Docker
+
+on:
+  pull_request:
+    paths:
+      - /Dockerfile
+      - /main.go
+      - /test.sh
+  push:
+    paths:
+      - /Dockerfile
+      - /main.go
+      - /test.sh
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: build docker image
+        run : |
+          docker build --tag=test .
+
+      - name: test docker image
+        run: |
+          CMD="docker run --rm -i -p 9001:9001 test --port=9001" ./test.sh
