@@ -1,8 +1,15 @@
 #!/bin/bash
+
 trap "printf '\n' && trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
-exec 3< <(go run . --port=9001 2>&1)
+set -x
+
+# example docker:
+# CMD="docker run --rm -i -p 9001:9001 <image> --port=9001" ./test.sh
+exec 3< <(${CMD="go run . --port=9001"} 2>&1)
 read <&3 line
+
+set +x
 
 if [[ $line =~ "Starting instance" ]]; then
   echo $line
