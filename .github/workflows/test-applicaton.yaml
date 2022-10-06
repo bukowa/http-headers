@@ -6,11 +6,16 @@ on:
       - /Dockerfile
       - /main.go
       - /test.sh
+    branches:
+      - "*"
+
   push:
     paths:
       - /Dockerfile
       - /main.go
       - /test.sh
+    branches:
+      - "*"
 
 jobs:
   build_test:
