@@ -1,6 +1,9 @@
 apiVersion: v2
 name: http-headers
 description: A Helm chart for Kubernetes
+maintainers:
+  - name: bukowa
+    url: https://github.com/bukowa
 
 # A chart can be either an 'application' or a 'library' chart.
 #
