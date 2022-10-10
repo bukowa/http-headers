@@ -22,7 +22,8 @@ RESULT=$(curl -H 'User-Agent:' -H 'Header1: header1' -H 'Header2: header2' local
 WANT='Instance name: example
 Accept: [*/*]
 Header1: [header1]
-Header2: [header2]'
+Header2: [header2]
+Host: [localhost:9001]'
 
 printf "===\nResult:\n===\n$RESULT\n"; printf "Want:\n===\n$WANT\n";
 
