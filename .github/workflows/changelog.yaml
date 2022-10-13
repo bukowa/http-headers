@@ -1,0 +1,46 @@
+name: Detect Changes
+
+# todo change branch main
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+
+  detect-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      -
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # https://github.com/tj-actions/changed-files/blob/main/README.md#inputs
+      -
+        name: Detect Changes
+        uses: tj-actions/changed-files@v32.1.0
+        id: changes
+        with:
+          files: |
+            *.go
+            *.mod
+            *Dockerfile
+
+      # Makefile
+      -
+        name: Generate Changelog
+        run: make generate-changelog-ci
+        if: steps.changes.outputs.any_changed == 'true'
+
+      # https://github.com/peter-evans/create-pull-request#action-inputs
+      -
+        name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: "change/${{ github.sha }}"
+          commit-message: "new changes"
+          title: "maybe new release?"
