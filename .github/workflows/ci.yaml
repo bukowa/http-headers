@@ -41,14 +41,14 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: Inspect labels
+        run: |
+          docker inspect --format='{{ .Config.Labels }}' ${{ steps.build.outputs.imageid }}
+
       -
         name: Test
         run: |
-          CMD="docker run --rm -i -p 9001:9001 ${{ steps.build.outputs.digest }} --port=9001" ./test.sh
-
-      - name: Inspect labels
-        run: |
-          docker inspect --format='{{ .Config.Labels }}' ${{ steps.build.outputs.digest }}
+          CMD="docker run --rm -i -p 9001:9001 ${{ steps.build.outputs.imageid }} --port=9001" ./test.sh
 
 #      -
 #        name: Build and push
