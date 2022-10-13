@@ -33,6 +33,7 @@ jobs:
           cat ${{ steps.meta.outputs.bake-file }}
       -
         name: Set up QEMU
+        id: qemu
         uses: docker/setup-qemu-action@v2
 
       -
@@ -48,6 +49,7 @@ jobs:
           load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: ${{ steps.qemu.outputs.platforms }}
 
       - name: Inspect labels
         run: |
