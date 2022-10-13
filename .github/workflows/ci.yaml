@@ -30,7 +30,7 @@ jobs:
       -
         name: Test
         run: |
-          CMD="docker run --rm -i -p 9001:9001 test --port=9001" ./test.sh
+          CMD="docker run --rm -i -p 9001:9001 ${{ env.TEST_TAG }} --port=9001" ./test.sh
 #      -
 #        name: Build and push
 #        uses: docker/build-push-action@v3
