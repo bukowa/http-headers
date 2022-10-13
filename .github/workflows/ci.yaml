@@ -28,9 +28,13 @@ jobs:
             type=ref,event=pr
             type=sha
 
-      - name: List meta
+      - name: List meta bake-file
         run: |
           cat ${{ steps.meta.outputs.bake-file }}
+
+      - name: List meta json
+        run: |
+          echo ${{ steps.meta.outputs.json}} | jq '.'
 
       -
         name: Set up QEMU
