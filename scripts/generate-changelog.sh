@@ -10,29 +10,8 @@ GIT_CLIFF=$(docker build -q - <<EOF
 EOF
 )
 
-echo "Generating CHANGELOG"
-touch "CHANGELOG.md"
-
 docker run --rm \
---volume="${PWD}:/workdirvol" \
--u "$(id -u)" \
-  \
+  --volume="${PWD}:/workdirvol" \
+  -u "$(id -u)" \
   "${GIT_CLIFF}" \
-  \
-    --include-path "main.go" \
-    --prepend "CHANGELOG.md" \
-    -u \
-    --tag="${TAG}" \
-    --verbose
-
-docker run --rm \
---volume="${PWD}:/workdirvol" \
--u "$(id -u)" \
-  \
-  "${GIT_CLIFF}" \
-  \
-    --include-path "main.go" \
-    --output "CHANGELOG.LATEST.md" \
-    -u \
-    --tag="${TAG}" \
-    --verbose
+  "$@"
