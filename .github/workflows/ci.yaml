@@ -19,6 +19,9 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
+        with:
+          images: |
+            quay.io/k8start/http-headers
 
       -
         name: Set up QEMU
