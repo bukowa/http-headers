@@ -25,7 +25,7 @@ Header1: [header1]
 Header2: [header2]
 Host: [localhost:9001]'
 
-printf "===\nResult:\n===\n$RESULT\n"; printf "Want:\n===\n$WANT\n";
+printf "===\nResult:\n===\n$RESULT\n"; printf "===\nWant:\n===\n$WANT\n===\n";
 
 if [[ "$RESULT" != "$WANT" ]]; then
   printf "test failed"; exit 1
