@@ -48,7 +48,9 @@ jobs:
           context: .
           load: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+            QUAY_EXPIRES_AFTER=24h
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -83,13 +85,15 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             QUAY_EXPIRES_AFTER=24h
-          labels: ${{ steps.meta.outputs.labels }}
-          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+            QUAY_EXPIRES_AFTER=24h
           cache-from: |
             type=gha
             type=registry,ref=quay.io/k8start/http-headers
           cache-to: |
             type=gha,mode=max
+#          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
 
 #      -
 #        name: Build and push
