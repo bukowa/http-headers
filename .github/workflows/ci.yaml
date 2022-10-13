@@ -19,6 +19,14 @@ jobs:
         with:
           images: |
             quay.io/k8start/http-headers
+          tags: |
+            type=schedule
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha
 
       -
         name: Set up QEMU
