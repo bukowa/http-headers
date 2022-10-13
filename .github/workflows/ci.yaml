@@ -13,6 +13,13 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.TEST_TAG }}
+
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -31,6 +38,11 @@ jobs:
         name: Test
         run: |
           CMD="docker run --rm -i -p 9001:9001 ${{ env.TEST_TAG }} --port=9001" ./test.sh
+
+      - name: inspect
+        run: |
+          docker inspect --format='{{ .Config.Labels }}' ${{ env.TEST_TAG }}
+
 #      -
 #        name: Build and push
 #        uses: docker/build-push-action@v3
