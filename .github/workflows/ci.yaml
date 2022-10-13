@@ -3,9 +3,6 @@ name: ci
 on:
   push:
 
-env:
-  TEST_TAG: user/myapp:test
-
 jobs:
 
   docker:
@@ -44,6 +41,10 @@ jobs:
       - name: Inspect labels
         run: |
           docker inspect --format='{{ .Config.Labels }}' ${{ steps.build.outputs.imageid }}
+
+      - name: List images
+        run: |
+          docker image ls | grep quay.io/k8start/http-headers
 
       -
         name: Test
