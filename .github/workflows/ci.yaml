@@ -46,10 +46,9 @@ jobs:
         id: build
         with:
           context: .
-#          load: true
+          load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
 
       - name: Inspect labels
         run: |
@@ -63,6 +62,15 @@ jobs:
         name: Test
         run: |
           CMD="docker run --rm -i -p 9001:9001 ${{ steps.build.outputs.imageid }} --port=9001" ./test.sh
+
+      -
+        name: Build and export to Docker
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
 
 #      -
 #        name: Build and push
