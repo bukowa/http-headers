@@ -46,7 +46,7 @@ jobs:
         id: build
         with:
           context: .
-          load: true
+#          load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ steps.qemu.outputs.platforms }}
