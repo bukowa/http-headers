@@ -6,6 +6,7 @@ on:
       - "Dockerfile"
       - "main.go"
       - "test.sh"
+      - "go.mod"
     branches:
       - "*"
 
@@ -14,6 +15,7 @@ on:
       - "Dockerfile"
       - "main.go"
       - "test.sh"
+      - "go.mod"
     branches:
       - "*"
 
