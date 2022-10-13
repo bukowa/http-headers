@@ -9,3 +9,4 @@ FROM alpine
 ENV GOTRACEBACK=single
 ENTRYPOINT ["./app"]
 COPY --from=builder /app .
+
