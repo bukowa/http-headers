@@ -7,9 +7,11 @@ env:
   TEST_TAG: user/myapp:test
 
 jobs:
+
   docker:
     runs-on: ubuntu-latest
     steps:
+
       -
         name: Checkout
         uses: actions/checkout@v3
@@ -17,12 +19,11 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.TEST_TAG }}
 
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -30,18 +31,21 @@ jobs:
       -
         name: Build and export to Docker
         uses: docker/build-push-action@v3
+        id: build
         with:
           context: .
           load: true
-          tags: ${{ env.TEST_TAG }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
       -
         name: Test
         run: |
-          CMD="docker run --rm -i -p 9001:9001 ${{ env.TEST_TAG }} --port=9001" ./test.sh
+          CMD="docker run --rm -i -p 9001:9001 ${{ steps.build.outputs.digest }} --port=9001" ./test.sh
 
-      - name: inspect
+      - name: Inspect labels
         run: |
-          docker inspect --format='{{ .Config.Labels }}' ${{ env.TEST_TAG }}
+          docker inspect --format='{{ .Config.Labels }}' ${{ steps.build.outputs.digest }}
 
 #      -
 #        name: Build and push
