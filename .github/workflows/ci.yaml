@@ -90,7 +90,6 @@ jobs:
             type=registry,ref=quay.io/k8start/http-headers
           cache-to: |
             type=gha,mode=max
-            type=registry,ref=quay.io/k8start/http-headers,mode=max
 
 #      -
 #        name: Build and push
