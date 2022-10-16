@@ -2,8 +2,13 @@ name: Build and Push Docker Images
 
 on:
   push:
-    branches:
-      - "*"
+    paths:
+      - "test.sh"
+      - "main.go"
+      - "go.mod"
+      - "Dockerfile"
+      - ".dockerignore"
+      - ".github/**"
     tags:
       - "*"
 
