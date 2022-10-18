@@ -30,7 +30,17 @@ func headers(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
+func livenessProbe(w http.ResponseWriter, req *http.Request) {
+	w.WriteHeader(200)
+}
+
+func readinessProbe(w http.ResponseWriter, req *http.Request) {
+	w.WriteHeader(200)
+}
+
 func main() {
+	http.HandleFunc("/livenessProbe", livenessProbe)
+	http.HandleFunc("/readinessProbe", readinessProbe)
 	http.HandleFunc("/", headers)
 
 	var host = flag.String("host", "", "host to run on")

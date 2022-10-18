@@ -17,7 +17,7 @@ if [[ $line =~ "Starting instance" ]]; then
     exit 1
 fi
 
-RESULT=$(curl -H 'User-Agent:' -H 'Header1: header1' -H 'Header2: header2' localhost:9001)
+RESULT=$(curl -s -H 'User-Agent:' -H 'Header1: header1' -H 'Header2: header2' localhost:9001)
 
 WANT='Instance name: example
 Accept: [*/*]
@@ -31,4 +31,20 @@ if [[ "$RESULT" != "$WANT" ]]; then
   printf "test failed"; exit 1
   else
     echo "test passed"
+fi
+
+RESULT=$(curl -s -w "%{http_code}\n" "localhost:9001/livenessProbe")
+
+if [[ "$RESULT" != 200 ]]; then
+  printf "test failed"; exit 1
+    else
+      echo "test passed"
+fi
+
+RESULT=$(curl -s -w "%{http_code}\n" "localhost:9001/readinessProbe")
+
+if [[ "$RESULT" != 200 ]]; then
+  printf "test failed"; exit 1
+    else
+      echo "test passed"
 fi
