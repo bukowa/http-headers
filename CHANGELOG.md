@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0]
+
+### Features
+
+- Add `livenessProbe` & `readinessProbe` ([#24](https://github.com/bukowa/http-headers/issues/24)) | ( [ Commit ](https://github.com/bukowa/http-headers/commit/a14d8fe9d03d039f28363196955c47807577908c) )    
+
 ## [1.0.0]
 
 ### Core
