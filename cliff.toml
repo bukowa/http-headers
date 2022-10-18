@@ -17,8 +17,7 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
-        - {% if commit.breaking %}[**breaking**] {% endif %}{{ commit.message }}\
-    {% endfor %}
+        - {% if commit.breaking %}[**breaking**] {% endif %}{{ commit.message | upper_first }} | ( [ Commit ](https://github.com/bukowa/http-headers/commit/{{ commit.id }}) )    {% endfor %}
 {% endfor %}\n
 """
 # remove the leading and trailing whitespace from the template
@@ -57,7 +56,7 @@ commit_parsers = [
 # filter out the commits that are not matched by commit parsers
 filter_commits = true
 # glob pattern for matching git tags
-tag_pattern = "[0-9].[0-9].[0-9].*"
+tag_pattern = "[0-9].[0-9].[0-9]"
 # regex for skipping tags
 skip_tags = "v0.1.0-beta.1"
 # regex for ignoring tags
