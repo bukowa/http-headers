@@ -4,6 +4,7 @@ ENV CGO_ENABLED=0
 RUN go build -o /app main.go
 
 FROM alpine
+RUN apk add traceroute bind-tools curl
 LABEL maintainer="github.com/bukowa"
 
 # Define GOTRACEBACK to mark this container as using the Go language runtime
