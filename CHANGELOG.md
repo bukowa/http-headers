@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0]
+
+### Features
+
+- Add `traceroute` `bind-tools` `curl` | ( [ Commit ](https://github.com/bukowa/http-headers/commit/6ad464cebceba1936f200859279a2d2da4b22e7a) )    
+
 ## [1.1.0]
 
 ### Features
