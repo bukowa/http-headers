@@ -21,7 +21,7 @@ jobs:
       # https://github.com/tj-actions/changed-files/blob/main/README.md#inputs
       -
         name: Detect Changes
-        uses: tj-actions/changed-files@v32.1.1
+        uses: tj-actions/changed-files@v35.4.1
         id: changes
         with:
           files: |
