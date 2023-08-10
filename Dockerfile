@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine as builder
+FROM golang:1.21-alpine as builder
 COPY main.go .
 ENV CGO_ENABLED=0
 RUN go build -o /app main.go
