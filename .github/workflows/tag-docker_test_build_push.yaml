@@ -11,6 +11,7 @@ on:
 #      - ".github/**"
     tags:
       - "*"
+  workflow_dispatch:
 
 jobs:
 
@@ -36,9 +37,6 @@ jobs:
         id: build
         with:
           context: .
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       -
         name: Test Docker Image
@@ -55,6 +53,7 @@ jobs:
             bukowa/http-headers
           tags: |
             type=schedule
+            type=edge,branch=master
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
@@ -125,7 +124,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: |
             type=gha
-            type=registry,ref=quay.io/k8start/http-headers
           cache-to: |
-            type=gha,mode=max
+            type=gha
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
