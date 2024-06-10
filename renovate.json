@@ -20,25 +20,11 @@
     "Package file",
     "References"
   ],
-  "prBodyDefinitions": {
-    "Package": "{{{depNameLinked}}}",
-    "Type": "{{{depType}}}",
-    "Update": "{{{updateType}}}",
-    "Current value": "{{{currentValue}}}",
-    "New value": "{{{newValue}}}",
-    "Change": "`{{{displayFrom}}}` -> `{{{displayTo}}}`",
-    "Pending": "{{{displayPending}}}",
-    "References": "{{{references}}}",
-    "Package file": "{{{packageFile}}}"
-  },
-  "prBodyNotes": [
-    ":cat: {{{updateType}}}"
-  ],
-  "prBodyTemplate": "{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{configDescription}}}{{{controls}}}{{{footer}}}",
   "commitMessageAction": "{{{updateType}}} update",
   "semanticCommits": "enabled",
   "semanticCommitScope": "deps",
   "semanticCommitType": "chore",
+  "commitBodyTable": true,
   "packageRules": [
     {
       "matchManagers": [
