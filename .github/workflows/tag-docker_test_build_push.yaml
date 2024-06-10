@@ -11,6 +11,7 @@ on:
 #      - ".github/**"
     tags:
       - "*"
+  workflow_dispatch:
 
 jobs:
 
@@ -37,8 +38,8 @@ jobs:
         with:
           context: .
           load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+#          cache-from: type=gha
+#          cache-to: type=gha,mode=max
 
       -
         name: Test Docker Image
@@ -123,9 +124,9 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: |
-            type=gha
-            type=registry,ref=quay.io/k8start/http-headers
-          cache-to: |
-            type=gha,mode=max
+#          cache-from: |
+#            type=gha
+#            type=registry,ref=quay.io/k8start/http-headers
+#          cache-to: |
+#            type=gha,mode=max
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
