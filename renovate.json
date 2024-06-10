@@ -32,9 +32,9 @@
         "github-actions"
       ],
       "groupName": "GitHub Actions",
-        "labels": ["gh-actions"],
+        "labels": ["github-actions"],
       "pinDigests": true,
-      "semanticCommitScope": "deps,gh-actions"
+      "semanticCommitScope": "deps,github-actions"
     },
     {
       "matchDatasources": [
