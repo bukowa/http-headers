@@ -4,9 +4,14 @@
     "config:base"
   ],
   "prHourlyLimit": 0,
-  "assignees": ["bukowa"],
+  "assignees": [
+    "bukowa"
+  ],
   "bumpVersion": "patch",
-  "gitIgnoredAuthors": ["gitbukowa@gmail.com", "git.bukowa@gmail.com"],
+  "gitIgnoredAuthors": [
+    "gitbukowa@gmail.com",
+    "git.bukowa@gmail.com"
+  ],
   "prBodyColumns": [
     "Package",
     "Type",
@@ -26,7 +31,9 @@
     "References": "{{{references}}}",
     "Package file": "{{{packageFile}}}"
   },
-  "prBodyNotes": [":cat: {{{updateType}}} :cat:"],
+  "prBodyNotes": [
+    ":cat: {{{updateType}}} :cat:"
+  ],
   "prBodyTemplate": "{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{configDescription}}}{{{controls}}}{{{footer}}}",
   "commitMessageAction": "{{{updateType}}} update",
   "semanticCommits": "enabled",
@@ -34,8 +41,16 @@
   "semanticCommitType": "chore",
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "GitHub Actions"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "pinDigests": true
     }
   ]
 }
