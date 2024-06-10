@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### Miscellaneous Tasks
+
+- Add comment to Dockerfile | ( [ Commit ](https://github.com/bukowa/http-headers/commit/fe65aa99e35806c50af52cb7456d6d3ea6ed7e65) )    
+
 ## [1.2.0]
 
 ### Features
