@@ -46,7 +46,7 @@
       ],
       "groupName": "GitHub Actions",
       "pinDigests": true,
-      "semanticCommitScope": "deps,github-actions"
+      "semanticCommitScope": "deps,gh-actions"
     },
     {
       "matchDatasources": [
