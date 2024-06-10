@@ -5,11 +5,14 @@ on:
   push:
     branches:
       - "main"
+  workflow_dispatch:
+
 
 jobs:
 
   detect-changes:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch'
 
     steps:
 
@@ -44,4 +47,22 @@ jobs:
           branch: "change/${{ github.sha }}"
           commit-message: "new changes"
           title: "maybe new release?"
+          delete-branch: true
+
+
+  release-dispatched:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Generate Changelog
+        run: make generate-changelog-ci
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: "change/${{ github.sha }}"
+          commit-message: "new changes"
+          title: "probably new release..."
           delete-branch: true
