@@ -1,3 +1,3 @@
 module github.com/bukowa/http-headers
 
-go 1.19
+go 1.22
