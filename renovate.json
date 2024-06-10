@@ -52,7 +52,8 @@
       "matchDatasources": [
         "docker"
       ],
-      "pinDigests": true
+      "pinDigests": true,
+        "semanticCommitScope": "deps,docker"
     }
   ]
 }
