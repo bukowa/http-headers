@@ -37,6 +37,7 @@ jobs:
         id: build
         with:
           context: .
+          load: true
 
       -
         name: Test Docker Image
