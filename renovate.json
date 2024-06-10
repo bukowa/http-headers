@@ -32,6 +32,7 @@
         "github-actions"
       ],
       "groupName": "GitHub Actions",
+        "labels": ["gh-actions"],
       "pinDigests": true,
       "semanticCommitScope": "deps,gh-actions"
     },
@@ -39,6 +40,7 @@
       "matchDatasources": [
         "docker"
       ],
+      "labels": ["docker"],
       "pinDigests": true,
         "semanticCommitScope": "deps,docker"
     }
