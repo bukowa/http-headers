@@ -32,7 +32,7 @@
     "Package file": "{{{packageFile}}}"
   },
   "prBodyNotes": [
-    ":cat: {{{updateType}}} :cat:"
+    ":cat: {{{updateType}}}"
   ],
   "prBodyTemplate": "{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{configDescription}}}{{{controls}}}{{{footer}}}",
   "commitMessageAction": "{{{updateType}}} update",
