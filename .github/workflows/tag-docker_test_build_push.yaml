@@ -2,19 +2,20 @@ name: Build and Push Docker Images
 
 on:
   push:
-    paths:
-      - "test.sh"
-      - "main.go"
-      - "go.mod"
-      - "Dockerfile"
-      - ".dockerignore"
-      - ".github/**"
+#    paths:
+#      - "test.sh"
+#      - "main.go"
+#      - "go.mod"
+#      - "Dockerfile"
+#      - ".dockerignore"
+#      - ".github/**"
     tags:
       - "*"
 
 jobs:
 
   Docker:
+    if: github.event_name != 'pull_request'
     name: Build and Push Docker Images
     runs-on: ubuntu-latest
     outputs:
@@ -55,12 +56,9 @@ jobs:
             bukowa/http-headers
           tags: |
             type=schedule
-            type=edge,branch=master
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=ref,event=branch
-            type=ref,event=pr
 
       - name: Set up QEMU
         id: qemu
