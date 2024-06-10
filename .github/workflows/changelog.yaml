@@ -55,6 +55,11 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
 
     steps:
+      -
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        with:
+          fetch-depth: 0
+
       - name: Generate Changelog
         run: make generate-changelog-ci
 
