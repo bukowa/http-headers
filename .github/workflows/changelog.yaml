@@ -44,3 +44,4 @@ jobs:
           branch: "change/${{ github.sha }}"
           commit-message: "new changes"
           title: "maybe new release?"
+          delete-branch: true
