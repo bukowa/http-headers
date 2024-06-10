@@ -55,6 +55,7 @@ jobs:
             ghcr.io/bukowa/http-headers
             bukowa/http-headers
           tags: |
+            type=edge,branch=main
             type=schedule
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
