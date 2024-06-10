@@ -14,14 +14,14 @@ jobs:
     steps:
 
       -
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
         with:
           fetch-depth: 0
 
       # https://github.com/tj-actions/changed-files/blob/main/README.md#inputs
       -
         name: Detect Changes
-        uses: tj-actions/changed-files@v41.0.0
+        uses: tj-actions/changed-files@cbda684547adc8c052d50711417fa61b428a9f88 # v41.1.2
         id: changes
         with:
           files: |
@@ -38,7 +38,7 @@ jobs:
       # https://github.com/peter-evans/create-pull-request#action-inputs
       -
         name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@38e0b6e68b4c852a5500a94740f0e535e0d7ba54 # v4
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "change/${{ github.sha }}"
