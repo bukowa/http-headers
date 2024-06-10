@@ -13,3 +13,4 @@ ENV GOTRACEBACK=single
 ENTRYPOINT ["./app"]
 COPY --from=builder /app .
 
+# Hello World!
