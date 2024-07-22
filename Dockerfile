@@ -3,7 +3,7 @@ COPY main.go .
 ENV CGO_ENABLED=0
 RUN go build -o /app main.go
 
-FROM alpine@sha256:77726ef6b57ddf65bb551896826ec38bc3e53f75cdde31354fbffb4f25238ebd
+FROM alpine@sha256:0a4eaa0eecf5f8c050e5bba433f58c052be7587ee8af3e8b3910ef9ab5fbe9f5
 RUN apk add traceroute bind-tools curl
 LABEL maintainer="github.com/bukowa"
 
