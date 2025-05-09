@@ -24,7 +24,7 @@ jobs:
       # https://github.com/tj-actions/changed-files/blob/main/README.md#inputs
       -
         name: Detect Changes
-        uses: tj-actions/changed-files@d6babd6899969df1a11d14c368283ea4436bca78 # v44.5.2
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
         id: changes
         with:
           files: |
@@ -41,7 +41,7 @@ jobs:
       # https://github.com/peter-evans/create-pull-request#action-inputs
       -
         name: Create Pull Request
-        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "change/${{ github.sha }}"
@@ -64,7 +64,7 @@ jobs:
         run: make generate-changelog-ci
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           branch: "change/${{ github.sha }}"
