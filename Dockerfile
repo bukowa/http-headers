@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine@sha256:9bdd5692d39acc3f8d0ea6f81327f87ac6b473dd29a2b6006df362bff48dd1f8 as builder
+FROM golang:1.24-alpine@sha256:ef18ee7117463ac1055f5a370ed18b8750f01589f13ea0b48642f5792b234044 as builder
 COPY main.go .
 ENV CGO_ENABLED=0
 RUN go build -o /app main.go
